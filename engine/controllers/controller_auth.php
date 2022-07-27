@@ -6,6 +6,7 @@
         }
 
         function action_index() {
+            $this->model->userAuth();
             $this->view->generate('auth_view.php');
         }
     }

@@ -4,6 +4,7 @@ class Route
 	public static function start()
 	{
 		//действия по умолчанию
+		$_SESSION['err'] = [];
 		$controller_name = 'main';
 		$action_name = 'index';
 
@@ -17,8 +18,32 @@ class Route
 				case 'regSuccessPage':
 					$controller_name = 'registration';
 					$action_name = 'reg_success';
-					break;				
+					break;
+				case 'check':
+					$controller_name = 'check';
+					$action_name = 'check';
+					break;
+				case 'error':
+					$controller_name = 'error';
+					$action_name = 'error';
+					break;
 			};
+		};
+
+		/*session_start();
+		include '../config/token.php';
+		$_POST["token"] =& $token;
+		$_SESSION["CSRF"] =& $_POST['token'];
+		$_POST['submitAuth'] = true;
+		$_POST['login'] = 'admin';
+		$_POST['password'] = 'admin';*/
+		if (isset($_POST['submitAuth'])) {
+			$controller_name = 'auth';
+		};
+
+		if (isset($_POST['registration'])) {
+			$controller_name = 'registration';
+			$action_name = 'index';
 		};
 		
 		// добавляем префиксы
