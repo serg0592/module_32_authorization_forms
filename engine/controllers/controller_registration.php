@@ -7,7 +7,7 @@ class Controller_Registration extends Controller {
     }
 
     //метод регистрации нового пользователя
-    function action_index() { 
+    function action_registration() { 
         $this->model->userReg();
     }
     

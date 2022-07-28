@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,15 +11,27 @@
     </head>
     <body>
         <header class="header">
-            
+            <div class="auth_shell">
+                <?php
+                    //если есть авторизованный пользователь, то подгружаем страницу для него,
+                    //иначе главную страницу
+                    if (isset($authUserData_view)) {
+                        include $authUserData_view;
+                    } elseif ($content_view == 'main_view.php') {
+                        include $content_view;
+                    }
+                ?>
+            </div>
         </header>
         <main class="main">
             <?php
-                include '../engine/views/'.$content_view;
+                //подгружаем содержимое страницы
+                if ($content_view !== 'main_view.php') {
+                    include $content_view;
+                }
             ?>
         </main>
         <footer>
-
         </footer>
     </body>
 </html>

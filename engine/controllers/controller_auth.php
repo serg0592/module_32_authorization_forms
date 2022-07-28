@@ -5,9 +5,9 @@
             $this->model = new Model_Auth();
         }
 
-        function action_index() {
+        function action_auth() {
             $this->model->userAuth();
-            $this->view->generate('auth_view.php');
+            $this->view->generate('auth_success_view.php', 'template_view.php');
         }
     }
 ?>

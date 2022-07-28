@@ -4,13 +4,17 @@ class Route
 	public static function start()
 	{
 		//действия по умолчанию
-		$_SESSION['err'] = [];
-		$controller_name = 'main';
-		$action_name = 'index';
+		$controller_name = 'check';
+		$action_name = 'check';
 
         //проверка наличия имя контроллера в GET
+		//$_GET['url'] = 'error';
 		if (isset($_GET['url'])) {
 			switch ($_GET['url']) {
+				case 'main':
+					$controller_name = 'main';
+					$action_name = 'index';
+					break;
 				case 'regPage':
 					$controller_name = 'registration';
 					$action_name = 'open_reg';
@@ -27,6 +31,10 @@ class Route
 					$controller_name = 'error';
 					$action_name = 'error';
 					break;
+				case 'authorized':
+					$controller_name = 'main';
+					$action_name = 'authorized';
+					break;
 			};
 		};
 
@@ -36,14 +44,15 @@ class Route
 		$_SESSION["CSRF"] =& $_POST['token'];
 		$_POST['submitAuth'] = true;
 		$_POST['login'] = 'admin';
-		$_POST['password'] = 'admin';*/
+		$_POST['password'] = '1';*/
 		if (isset($_POST['submitAuth'])) {
 			$controller_name = 'auth';
+			$action_name = 'auth';
 		};
 
 		if (isset($_POST['registration'])) {
 			$controller_name = 'registration';
-			$action_name = 'index';
+			$action_name = 'registration';
 		};
 		
 		// добавляем префиксы

@@ -5,7 +5,7 @@
         }
 
         function action_error() { 
-            $this->view->generate('error_view.php', 'template_view');
+            $this->view->generate('error_view.php', 'template_view.php');
         }
     }
 ?>

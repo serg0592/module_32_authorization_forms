@@ -4,7 +4,7 @@
         <div class="log_text">Логин</div>
         <div class="pas_text">Пароль</div>
         <div class="checkbox_shell">
-            <input name="remember" type="checkbox" value="remember">
+            <input name="rememberUser" type="checkbox" value="remember">
         </div>
     </div>
     <div class="auth_form_fields">
