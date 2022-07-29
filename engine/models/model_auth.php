@@ -13,44 +13,55 @@
         
         //авторизация пользователя
         public function userAuth() {
-            //session_start();
+            session_start();
+            $_SESSION['login'] =& $_POST['login'];
+            $_SESSION['password'] =& $_POST['password'];
+
             // Соединяемся с БД
             include '../config/db_connect.php';
+
             // Вытаскиваем из БД запись, у которой логин равняется введенному
             $query = mysqli_query(
-                $link, "SELECT user_id, user_pas FROM users 
+                $link, "SELECT id, user_pas, user_log FROM users 
                 WHERE user_log='".mysqli_real_escape_string($link, $_POST['login'])."' LIMIT 1"
             );
             $data = mysqli_fetch_assoc($query); 
             
-            if(isset($data['user_id'])) {
+            //если найден id в БД
+            if(isset($data['id'])) {
+                //запишем в сессию id пользователя
+                $_SESSION['id'] =& $data['id'];
+
                 // Сравниваем пароли
                 if($data['user_pas'] === crypt($_POST['password'], 'UlTrAGyPeRsEcReT')) {
+                    // Генерируем случайное число хэша авторизации и шифруем его
+                    $authHash = md5($this->generateCode(13));
+
+                    // Записываем в БД новый хеш авторизации
+                    mysqli_query(
+                        $link, "UPDATE users 
+                        SET user_authHash='".$authHash."' WHERE id='".$data['id']."'"
+                    );
+
                     //проверка чек-бокса "запомнить меня"
                     if ($_POST['rememberUser'] === 'remember') {
-                        // Генерируем случайное число хэша авторизации и шифруем его
-                        $authHash = md5($this->generateCode(13));
-
-                        // Записываем в БД новый хеш авторизации
-                        mysqli_query(
-                            $link, "UPDATE users 
-                            SET user_authHash='".$authHash."' WHERE user_id='".$data['user_id']."'"
-                        );
-
-                        // Ставим куки (живут 5 минут)
+                        //если "запомнить", ставим куки (живут 1 день)
                         //id пользователя
                         setcookie(
-                            "id", $data['user_id'], time()+60*5, "/", "localhost", false, true
+                            "id", $data['id'], time()+60*60*24, "/", "localhost", false, true
                         );
                         //хэш авторизации
                         setcookie(
-                            "authHash", $authHash, time()+60*5, "/", "localhost", false, true
+                            "authHash", $authHash, time()+60*60*24, "/", "localhost", false, true
                         ); // httponly!
+                    } else {
+                        //если нет "запомнить", записываем хэш в сессию
+                        $_SESSION['authHash'] =& $authHash;
                     };
 
                     // Переадресовываем браузер на страницу проверки нашего скрипта
                     header("Location: ?url=check");
-                    
+
                 } else {
                     $_SESSION['err'][] = 'Неверный пароль';
                     header('Location: ?url=error');

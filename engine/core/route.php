@@ -8,7 +8,6 @@ class Route
 		$action_name = 'check';
 
         //проверка наличия имя контроллера в GET
-		//$_GET['url'] = 'error';
 		if (isset($_GET['url'])) {
 			switch ($_GET['url']) {
 				case 'main':
@@ -35,16 +34,17 @@ class Route
 					$controller_name = 'main';
 					$action_name = 'authorized';
 					break;
+				case 'logout':
+					$controller_name = 'logout';
+					$action_name = 'logout';
+					break;
+				case 'authSuccess':
+					$controller_name = 'main';
+					$action_name = 'authSuccess';
+					break;
 			};
 		};
 
-		/*session_start();
-		include '../config/token.php';
-		$_POST["token"] =& $token;
-		$_SESSION["CSRF"] =& $_POST['token'];
-		$_POST['submitAuth'] = true;
-		$_POST['login'] = 'admin';
-		$_POST['password'] = '1';*/
 		if (isset($_POST['submitAuth'])) {
 			$controller_name = 'auth';
 			$action_name = 'auth';
@@ -91,7 +91,15 @@ class Route
 			//вызываем страницу с ошибкой 404
 		    Route::ErrorPage404();
 		};
+
+		echo $_SESSION['id']."<br>";
+		echo $_SESSION['login']."<br>";
+		echo $_SESSION['password']."<br>";
+		echo $_SESSION['authHash']."<br>";
+		echo $_SESSION['data']."<br>";
 	}
+
+	
 
 	public static function ErrorPage404() {
 		$host = 'http://'.$_SERVER['HTTP_HOST'].'/';
