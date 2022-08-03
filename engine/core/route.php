@@ -42,6 +42,14 @@ class Route
 					$controller_name = 'main';
 					$action_name = 'authSuccess';
 					break;
+				case 'response_oauth':
+					$controller_name = 'response_oauth';
+					$action_name = 'responseOAuth';
+					break;
+				case 'request_oauth':
+					$controller_name = 'request_oauth';
+					$action_name = 'requestOAuth';
+					break;
 			};
 		};
 
@@ -92,11 +100,12 @@ class Route
 		    Route::ErrorPage404();
 		};
 
-		echo $_SESSION['id']."<br>";
+		/*echo $_SESSION['id']."<br>";
 		echo $_SESSION['login']."<br>";
 		echo $_SESSION['password']."<br>";
 		echo $_SESSION['authHash']."<br>";
 		echo $_SESSION['data']."<br>";
+		echo $_SESSION['oauthToken']."<br>";*/
 	}
 
 	

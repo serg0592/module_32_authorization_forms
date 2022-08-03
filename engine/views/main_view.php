@@ -18,4 +18,8 @@
 </form>
 <p>
     <a class="reg_link" href="?url=regPage">Регистрация</a>
+</p><br>
+<p>
+    <a class="reg_linkVK" href="?url=request_oauth">
+        Авторизация через ВКонтакте</a>
 </p>
