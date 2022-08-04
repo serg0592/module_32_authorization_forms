@@ -5,7 +5,7 @@
             $this->model = new Model_Request_OAuth();
         }
 
-        function action_request_oauth() {
+        function action_requestOAuth() {
             $this->model->requestOAuth();
         }
     }

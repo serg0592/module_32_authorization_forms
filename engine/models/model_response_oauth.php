@@ -8,7 +8,8 @@
                 'client_id'     => $clientId,
                 'client_secret' => $clientSecret,
                 'code'          => $_GET['code'],
-                'redirect_uri'  => $redirectUri
+                'redirect_uri'  => $redirectUri,
+                'display'       => $display,
             );
          
             if (!$content = @file_get_contents('https://oauth.vk.com/access_token?' . http_build_query($params))) {
@@ -29,6 +30,7 @@
          
             // Сохраняем токен в сессии
             $_SESSION['oauthToken'] = $token;
+            $_SESSION['response'] = $response;
         }
     }        
 ?>

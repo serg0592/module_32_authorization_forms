@@ -6,7 +6,7 @@
             // Параметры приложения
             $clientId     = '1111111'; // ID приложения
             $clientSecret = 'mysecret'; // Защищённый ключ
-            $redirectUri  = 'http://localhost/myProjects/module_32_authorization_forms/public/?url=response_oauth'; // Адрес, на который будет переадресован пользователь после прохождения авторизации
+            $redirectUri  = 'http://127.0.0.1/myProjects/module_32_authorization_forms/public/?url=response_oauth'; // Адрес, на который будет переадресован пользователь после прохождения авторизации
             $display = 'popup';
         
             // Формируем ссылку для авторизации
@@ -23,7 +23,7 @@
                 // Если не указать "offline", то полученный токен будет жить 12 часов.
             );
             //переходим по ссылке
-            header ("Location: http://oauth.vk.com/authorize?" . http_build_query($params));
+            header("Location: http://oauth.vk.com/authorize?" . http_build_query($params));
         }
     }        
 ?>

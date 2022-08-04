@@ -8,6 +8,7 @@ class Route
 		$action_name = 'check';
 
         //проверка наличия имя контроллера в GET
+		//$_GET['url'] = 'request_oauth';
 		if (isset($_GET['url'])) {
 			switch ($_GET['url']) {
 				case 'main':
@@ -100,12 +101,13 @@ class Route
 		    Route::ErrorPage404();
 		};
 
-		/*echo $_SESSION['id']."<br>";
+		echo $_SESSION['id']."<br>";
 		echo $_SESSION['login']."<br>";
 		echo $_SESSION['password']."<br>";
 		echo $_SESSION['authHash']."<br>";
 		echo $_SESSION['data']."<br>";
-		echo $_SESSION['oauthToken']."<br>";*/
+		echo $_SESSION['oauthToken']."<br>";
+		echo $_SESSION['response']."<br>";
 	}
 
 	
