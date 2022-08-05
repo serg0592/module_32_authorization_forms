@@ -23,6 +23,7 @@
                     exit();
                 } else {
                     $_SESSION['message'] = "Привет, ".$userdata['user_log']."!(куки)";
+                    $_SESSION['role'] = $userdata['role'];
                     header("Location: ?url=authSuccess");
                     exit();
                 };
@@ -47,6 +48,7 @@
                     exit();
                 } else {
                     $_SESSION['message'] = "Привет, ".$userdata['user_log']."!(сессия)";
+                    $_SESSION['role'] = $userdata['role'];
                     header("Location: ?url=authSuccess");
                     exit();
                 };

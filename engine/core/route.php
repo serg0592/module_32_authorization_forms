@@ -58,7 +58,7 @@ class Route
 			$controller_name = 'auth';
 			$action_name = 'auth';
 		};
-
+		
 		if (isset($_POST['registration'])) {
 			$controller_name = 'registration';
 			$action_name = 'registration';

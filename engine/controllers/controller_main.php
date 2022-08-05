@@ -10,7 +10,7 @@
         }
 
         function action_authorized() {
-            $this->view->generateAuth('empty_content_view.php', 'template_view.php', 'auth_user_greating_view.php');
+            $this->view->generateAuth('auth_content_view.php', 'template_view.php', 'auth_user_greating_view.php');
         }
 
         function action_authSuccess() {

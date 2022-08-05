@@ -16,7 +16,7 @@
                 } 
                 
                 // проверяем, не существует ли пользователя с таким именем
-                $query = mysqli_query($link, "SELECT user_id FROM users 
+                $query = mysqli_query($link, "SELECT id FROM users 
                                     WHERE user_log='".mysqli_real_escape_string($link, $_POST['login'])."'");
                 
                 if(mysqli_num_rows($query) > 0) {
@@ -24,7 +24,7 @@
                 } 
                 
                 // Если нет ошибок, то добавляем в БД нового пользователя
-                if(count($_SESSION['err']) == 0) {
+                if(!isset($_SESSION['err'])) {
                     $login = $_POST['login'];
                     // Убираем лишние пробелы и делаем двойное хэширование (используем старый метод md5)
                     $password = crypt($_POST['password'], 'UlTrAGyPeRsEcReT'); 
