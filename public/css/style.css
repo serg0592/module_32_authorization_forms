@@ -62,11 +62,7 @@ h4 {
     width:230px;
 }
 .reg_linkVK {
-    margin-top: 0px;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left: 1%;
-    padding-right: 1%;
+    padding: 10px 2.5%;
     border: none;
     background-color:#5181b8;
     color:#fff;
@@ -94,6 +90,7 @@ h4 {
     font-family: 'Roboto', serif;
     position: absolute;
     right: 30px;
+    width: 250px;
 }
 .great_text {
     margin: 15px;
@@ -128,14 +125,13 @@ input[type=password] {
     margin-top: 2px;
     margin-bottom: 5px;
 }
-input[type=submit] {      
-    padding:10px;
+input[type=submit], .the_btn {      
+    padding:10px 26.5%;
     border:none;
     background-color:#3F51B5;
     color:#fff;
     font-weight:600;
     border-radius:5px;
-    width:234px;
 }
 input#file-upload-button {      
     padding:10px;

@@ -18,15 +18,15 @@
 
     //реализация прав пользователей
     if ($canView) {
-        $arBtnStatus = 'inactive';
+        $btnStatus = 'disabled';
     };
     if ($canEdit) {
-        $arBtnStatus = 'inactive';
+        $btnStatus = 'disabled';
     };
     if ($canDelete) {
-        $arBtnStatus = 'active';
+        $btnStatus = '';
     };
     if ($canPush) {
-        $arBtnStatus = 'active';
+        $btnStatus = '';
     };
 ?>
