@@ -4,9 +4,9 @@
             session_start(); // Токен храним в сессии
  
             // Параметры приложения
-            $clientId     = '1111111'; // ID приложения
-            $clientSecret = 'mysecret'; // Защищённый ключ
-            $redirectUri  = 'http://127.0.0.1/myProjects/module_32_authorization_forms/public/?url=response_oauth'; // Адрес, на который будет переадресован пользователь после прохождения авторизации
+            $clientId     = '51396063'; // ID приложения
+            $clientSecret = 'QjyZaRAexj5w4gowqqkm'; // Защищённый ключ
+            $redirectUri  = 'https://serg0592.github.io/module_32_authorization_forms/index.html'; // Адрес, на который будет переадресован пользователь после прохождения авторизации
             $display = 'popup';
         
             // Формируем ссылку для авторизации

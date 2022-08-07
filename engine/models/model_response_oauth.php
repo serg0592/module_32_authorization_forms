@@ -31,6 +31,7 @@
             // Сохраняем токен в сессии
             $_SESSION['oauthToken'] = $token;
             $_SESSION['response'] = $response;
+            header('Location: ?url=main');
         }
     }        
 ?>

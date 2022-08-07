@@ -101,6 +101,7 @@ class Route
 		    Route::ErrorPage404();
 		};
 
+		session_start();
 		echo "id         = " . $_SESSION['id']."<br>";
 		echo "log        = " . $_SESSION['login']."<br>";
 		echo "password   = " . $_SESSION['password']."<br>";
