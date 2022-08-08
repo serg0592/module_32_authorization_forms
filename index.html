@@ -8,6 +8,17 @@
     </head>
     <body>
         Hello, world!<br>
-        <a href="http://localhost/myProjects/module_32/public/index.php?url=response_oauth">На главную</a>
+        <form name="VKOAuth" method="get" action="http://localhost/myProjects/module_32/public/index.php?url=response_oauth">
+            <input type="hidden" name="code" value="">
+            <input type="submit" name="submit" value="На главную">
+        </form>
+        <script language="javascript">
+            var url = document.location.search;
+            var code = new URLSearchParams(url);
+            const form = document.forms.VKOAuth;
+
+            code.get("code");
+            form.elements.code.value = code;            
+        </script>
     </body>
 </html>
