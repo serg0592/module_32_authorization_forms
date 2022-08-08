@@ -43,16 +43,17 @@ class Route
 					$controller_name = 'main';
 					$action_name = 'authSuccess';
 					break;
-				case 'response_oauth':
-					$controller_name = 'response_oauth';
-					$action_name = 'responseOAuth';
-					break;
 				case 'request_oauth':
 					$controller_name = 'request_oauth';
 					$action_name = 'requestOAuth';
 					break;
 			};
 		};
+
+		if(isset($_GET['sendOAuthCode'])) {
+			$controller_name = 'response_oauth';
+			$action_name = 'responseOAuth';
+		}
 
 		if (isset($_POST['submitAuth'])) {
 			$controller_name = 'auth';
