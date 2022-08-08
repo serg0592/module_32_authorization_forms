@@ -5,8 +5,8 @@
             $this->model = new Model_Request_OAuth();
         }
 
-        function action_requestOAuth() {
-            $this->model->requestOAuth();
+        function action_request_oauth() {
+            $this->model->request_oauth();
         }
     }
 ?>

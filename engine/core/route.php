@@ -45,14 +45,16 @@ class Route
 					break;
 				case 'request_oauth':
 					$controller_name = 'request_oauth';
-					$action_name = 'requestOAuth';
+					$action_name = 'request_oauth';
 					break;
 			};
 		};
 
+		//$_GET['sendOAuthCode'] = 'На гоавную';
+		//$_GET['code'] = 'a29172e137883d9813';
 		if(isset($_GET['sendOAuthCode'])) {
 			$controller_name = 'response_oauth';
-			$action_name = 'responseOAuth';
+			$action_name = 'response_oauth';
 		}
 
 		if (isset($_POST['submitAuth'])) {

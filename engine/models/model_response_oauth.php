@@ -1,8 +1,8 @@
 <?php
     class Model_Response_OAuth extends Model {
-        public function responseOAuth() {
+        public function response_oauth() {
             //подключим файл модели с параметрами запроса OAuth
-            include_once '..engine/models/model_request_oauth';
+            include_once '../config/vk_oauth_app_params.php';
 
             $params = array(
                 'client_id'     => $clientId,

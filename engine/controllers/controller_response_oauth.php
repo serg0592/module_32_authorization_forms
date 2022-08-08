@@ -6,8 +6,8 @@
         }
 
         function action_response_oauth() {
-            $this->model->responseOAuth();
-            $this->view->generate('response.php, template.php');
+            $this->model->response_oauth();
+            $this->view->generate('response.php', 'template.php');
         }
     }
 ?>

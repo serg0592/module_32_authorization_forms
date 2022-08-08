@@ -1,13 +1,9 @@
 <?php
     class Model_Request_OAuth extends Model {
-        public function requestOAuth() {
+        public function request_oauth() {
             session_start(); // Токен храним в сессии
  
-            // Параметры приложения
-            $clientId     = '51396063'; // ID приложения
-            $clientSecret = 'QjyZaRAexj5w4gowqqkm'; // Защищённый ключ
-            $redirectUri  = 'https://serg0592.github.io/module_32_authorization_forms/index.html'; // Адрес, на который будет переадресован пользователь после прохождения авторизации
-            $display = 'popup';
+            include_once '../config/vk_oauth_app_params.php';
         
             // Формируем ссылку для авторизации
             $params = array(
