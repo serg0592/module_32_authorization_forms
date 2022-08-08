@@ -7,7 +7,7 @@
 
         function action_response_oauth() {
             $this->model->response_oauth();
-            $this->view->generate('response.php', 'template.php');
+            $this->view->generate('response_view.php', 'template_view.php');
         }
     }
 ?>
