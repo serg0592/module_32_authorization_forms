@@ -8,7 +8,6 @@ class Route
 		$action_name = 'check';
 
         //проверка наличия имя контроллера в GET
-		//$_GET['url'] = 'request_oauth';
 		if (isset($_GET['url'])) {
 			switch ($_GET['url']) {
 				case 'main':
@@ -47,11 +46,13 @@ class Route
 					$controller_name = 'request_oauth';
 					$action_name = 'request_oauth';
 					break;
+				case 'getVKUserdata':
+					$controller_name = 'get_VK_userdata';
+					$action_name = 'get_VK_userdata';
+					break;
 			};
 		};
 
-		//$_GET['sendOAuthCode'] = 'На гоавную';
-		//$_GET['code'] = 'a29172e137883d9813';
 		if(isset($_GET['sendOAuthCode'])) {
 			$controller_name = 'response_oauth';
 			$action_name = 'response_oauth';
@@ -105,13 +106,14 @@ class Route
 		};
 
 		session_start();
-		echo "id         = " . $_SESSION['id']."<br>";
-		echo "log        = " . $_SESSION['login']."<br>";
-		echo "password   = " . $_SESSION['password']."<br>";
-		echo "auth hash  = " . $_SESSION['authHash']."<br>";
-		echo "data       = " . $_SESSION['data']."<br>";
-		echo "auth token = " . $_SESSION['oauthToken']."<br>";
+		echo "id(DB)         = " . $_SESSION['id']."<br>";
+		echo "log(DB)        = " . $_SESSION['login']."<br>";
+		echo "password(DB)   = " . $_SESSION['password']."<br>";
+		echo "auth hash(DB)  = " . $_SESSION['authHash']."<br>";
+		echo "data           = " . $_SESSION['data']."<br>";
+		echo "auth token(VK) = " . $_SESSION['VKoauthToken']."<br>";
 		var_dump($_SESSION['response']);
+		var_dump($_SESSION['userData']);
 	}
 
 	

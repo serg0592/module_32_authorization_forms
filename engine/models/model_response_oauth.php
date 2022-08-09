@@ -29,7 +29,8 @@
             $userId = $response->user_id; // ID авторизовавшегося пользователя
          
             // Сохраняем токен в сессии
-            $_SESSION['oauthToken'] = $token;
+            $_SESSION['VKoauthToken'] = $token;
+            $_SESSION['VKuserId'] = $userId;
             $_SESSION['response'] = $response;
         }
     }        
