@@ -29,7 +29,7 @@
                 };
 
 
-            //если куки не установлены, проверяем в сессии (пользователь не "запоминал себя")
+            //если куки не установлены, проверяем наличие в сессии хэша авторизации и логина(пользователь не "запоминал себя")
             } elseif (isset($_SESSION['authHash']) && isset($_SESSION['login'])) {
                 $query = mysqli_query(
                     $link, "SELECT * FROM users 
@@ -53,10 +53,15 @@
                     exit();
                 };
 
-
+            //если в сессии нет хэша авторизации и логина, то проверяем наличие VK-токена
+            } elseif (isset($_SESSION['VKoauthToken'])) {
+                $_SESSION['message'] = "Привет, ".$_SESSION['first_name']." ".$_SESSION['last_name']." !(VK OAuth)";
+                $_SESSION['role'] = 'guest';
+                header("Location: ?url=authSuccess");
+                exit();
                 
             } else {
-                $_SESSION['err'][] = 'Куки не найдены';
+                $_SESSION['err'][] = 'Нет авторизованных пользователей';
                 header('Location: ?url=error');
                 exit();
             };

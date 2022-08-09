@@ -1,6 +1,7 @@
 <?php
     class Model_Response_OAuth extends Model {
         public function response_oauth() {
+            session_start();
             //подключим файл модели с параметрами запроса OAuth
             include_once '../config/vk_oauth_app_params.php';
 
@@ -21,8 +22,9 @@
          
             // Если при получении токена произошла ошибка
             if (isset($response->error)) {
-                throw new Exception('При получении токена произошла ошибка. Error: ' . $response->error . '. Error description: ' . $response->error_description);
+                throw new Exception('При получении токена произошла ошибка. Error code: ' . $response->error->error_code . '. Error description: ' . $response->error->error_msg);
             }
+
             //А вот здесь выполняем код, если все прошло хорошо
             $token = $response->access_token; // Токен
             $expiresIn = $response->expires_in; // Время жизни токена

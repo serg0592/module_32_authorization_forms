@@ -53,16 +53,19 @@ class Route
 			};
 		};
 
-		if(isset($_GET['sendOAuthCode'])) {
-			$controller_name = 'response_oauth';
-			$action_name = 'response_oauth';
-		}
+		//проверка данных формы из index.html (переход к VK OAuth или на страницу авторизации этого приложения)
+		if(isset($_GET['sendOAuthCode']) && (!$_GET['code'] == '')) {
+				$controller_name = 'response_oauth';
+				$action_name = 'response_oauth';
+		};
 
+		//нажата кнопка "Авторизоваться"
 		if (isset($_POST['submitAuth'])) {
 			$controller_name = 'auth';
 			$action_name = 'auth';
 		};
 		
+		//нажата кнопка "Регистрация"
 		if (isset($_POST['registration'])) {
 			$controller_name = 'registration';
 			$action_name = 'registration';
@@ -105,15 +108,25 @@ class Route
 		    Route::ErrorPage404();
 		};
 
+		//печать данных для контроля
 		session_start();
-		echo "id(DB)         = " . $_SESSION['id']."<br>";
-		echo "log(DB)        = " . $_SESSION['login']."<br>";
-		echo "password(DB)   = " . $_SESSION['password']."<br>";
-		echo "auth hash(DB)  = " . $_SESSION['authHash']."<br>";
-		echo "data           = " . $_SESSION['data']."<br>";
-		echo "auth token(VK) = " . $_SESSION['VKoauthToken']."<br>";
-		var_dump($_SESSION['response']);
-		var_dump($_SESSION['userData']);
+		if(isset($_SESSION['id'])) {
+			echo "id(DB)         = " . $_SESSION['id']."<br>";
+			echo "log(DB)        = " . $_SESSION['login']."<br>";
+			echo "password(DB)   = " . $_SESSION['password']."<br>";
+			echo "auth hash(DB)  = " . $_SESSION['authHash']."<br>";
+			echo "data           = " . $_SESSION['data']."<br>";
+		} elseif (isset($_SESSION['VKoauthToken'])) {
+			echo "auth token(VK) = " . $_SESSION['VKoauthToken']."<br>";
+			if(isset($_SESSION['response'])) {
+				var_dump($_SESSION['response']);
+			};
+			echo "<br>";
+			if(isset($_SESSION['userData'])) {
+				var_dump($_SESSION['userData']);
+			};
+		};
+		
 	}
 
 	
