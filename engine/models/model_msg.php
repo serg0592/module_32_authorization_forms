@@ -1,8 +1,6 @@
 <?php
     class Model_Msg extends Model {
         function saveMsg() {
-            include_once '../config/logger.php';
-
             session_start();
             //передаем текст комментария и id изображения
             $_SESSION['msg'] = $_POST['msgText'];

@@ -1,11 +1,11 @@
 <?php
+    use Monolog\Level;
     use Monolog\Logger;
     use Monolog\Handler\StreamHandler;
-    use Monolog\Formatter\HtmlFormatter;
 
     // Создаем логгер 
-    $log = new Logger('firstLogger');
+    $log = new \Monolog\Logger('firstLogger');
 
-    // Хендлер, который будет писать логи в "log.txt" и слушать все ошибки с уровнем "NOTICE" и выше .
-    $log->pushHandler(new StreamHandler('../data/logs/mylog.log', Logger::NOTICE));
+    // Хендлер, который будет писать логи в "log.txt" и слушать все ошибки с уровнем "DEBUG" и выше .
+    $log->pushHandler(new Monolog\Handler\StreamHandler('../data/logs/mylog.log', Logger::DEBUG));
 ?>

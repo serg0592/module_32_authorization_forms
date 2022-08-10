@@ -1,0 +1,8 @@
+{
+    "minimum-stability": "stable",
+    "require": {
+        "psr/log": "^3.0",
+        "monolog/monolog": "^3.2",
+        "php-console/php-console": "^3.1"
+    }
+}
