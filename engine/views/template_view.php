@@ -27,6 +27,12 @@
                     include $content_view;
                 }
             ?>
+            <div class="msgarea">
+                <form method="post" action="">
+                    <textarea name="msgText" rows="10" cols="50"></textarea>
+                    <input type="submit" name="sendMsg" value="Отправить сообщение">
+                </form>
+            </div>
         </main>
         <footer>
         </footer>

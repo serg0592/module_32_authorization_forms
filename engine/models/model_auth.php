@@ -64,11 +64,13 @@
 
                 } else {
                     $_SESSION['err'][] = 'Неверный пароль';
-                    header('Location: ?url=error');
+                    //header('Location: ?url=error');
+                    header('Location: &url=main');
                 };
             } else {
                 $_SESSION['err'][] = 'Неверный логин';
-                header('Location: ?url=error');
+                //header('Location: ?url=error');
+                header('Location: &url=main');
             };
         }
     }

@@ -26,16 +26,15 @@
                 // Если нет ошибок, то добавляем в БД нового пользователя
                 if(!isset($_SESSION['err'])) {
                     $login = $_POST['login'];
-                    // Убираем лишние пробелы и делаем двойное хэширование (используем старый метод md5)
+                    // Убираем лишние пробелы и делаем хэширование методом crypt
                     $password = crypt($_POST['password'], 'UlTrAGyPeRsEcReT'); 
                     mysqli_query($link,"INSERT INTO users SET user_log='".$login."', user_pas='".$password."'");
 
                     //переадресовываем на страницу с сообщением об успехе
-                    header("Location: ?url=regSuccessPage");
-
+                    header("Location: ?url=authorized");
                     exit();
                 } else {
-                    header('Location: ?url=error');
+                    header('Location: ?url=check');
                 }
             }
         }

@@ -22,7 +22,10 @@
          
             // Если возникла ошибка
             if (isset($response->error)) {
-                throw new Exception('При отправке запроса к API VK возникла ошибка. Error code: ' . $response->error->error_code . '. Error description: ' . $response->error->error_msg);
+                throw new Exception (
+                    'При отправке запроса к API VK возникла ошибка. Error code: '
+                     . $response->error->error_code . '. Error description: ' . $response->error->error_msg
+                );
             }
 
             //манипуляции для вывода данных

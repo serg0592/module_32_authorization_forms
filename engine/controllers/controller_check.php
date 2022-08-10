@@ -7,7 +7,6 @@ class Controller_Check extends Controller {
 
     function action_check() {
         $this->model->checkUser();
-        $this->view->generate('check_view.php', 'template_view.php');
     }
 }
 ?>

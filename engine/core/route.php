@@ -71,6 +71,12 @@ class Route
 			$action_name = 'registration';
 		};
 		
+		//отправлено сообщение
+		if (isset($_POST['sendMsg'])) {
+			$controller_name = 'msg';
+			$action_name = 'saveMsg';
+		};
+
 		// добавляем префиксы
 		$model_name = 'model_'.$controller_name;
 		$controller_name = 'controller_'.$controller_name;
@@ -110,12 +116,14 @@ class Route
 
 		//печать данных для контроля
 		session_start();
+		if (isset($_SESSION['err'])) {
+			var_dump($_SESSION['err']);
+		};
 		if(isset($_SESSION['id'])) {
 			echo "id(DB)         = " . $_SESSION['id']."<br>";
 			echo "log(DB)        = " . $_SESSION['login']."<br>";
 			echo "password(DB)   = " . $_SESSION['password']."<br>";
 			echo "auth hash(DB)  = " . $_SESSION['authHash']."<br>";
-			echo "data           = " . $_SESSION['data']."<br>";
 		} elseif (isset($_SESSION['VKoauthToken'])) {
 			echo "auth token(VK) = " . $_SESSION['VKoauthToken']."<br>";
 			if(isset($_SESSION['response'])) {

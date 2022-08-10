@@ -15,11 +15,11 @@
             
                 //проверяем соответствие хэша авторизации и id в БД с хэшом авторизации и id в cookie
                 if(($userdata['user_authHash'] !== $_COOKIE['authHash']) or ($userdata['id'] !== $_COOKIE['id'])) {
-                    $_SESSION['err'][] = $_COOKIE['id'];
+                    /*$_SESSION['err'][] = $_COOKIE['id'];
                     $_SESSION['err'][] = $_COOKIE['authHash'];
                     $_SESSION['err'][] = 'Не соответствует хэш авторизации / id пользователя';
                     //переход на страницу с выводом ошибок
-                    header('Location: ?url=error');
+                    header('Location: ?url=error');*/
                     exit();
                 } else {
                     $_SESSION['message'] = "Привет, ".$userdata['user_log']."!(куки)";
@@ -40,16 +40,17 @@
                 //проверяем соответствие хэша авторизации и логина в БД с хэшом авторизации и логина в сессии
                 if(($userdata['user_authHash'] !== $_SESSION['authHash']) 
                         or ($userdata['user_log'] !== $_SESSION['login'])) {
-                    $_SESSION['err'][] = $_SESSION['login'];
+                    /*$_SESSION['err'][] = $_SESSION['login'];
                     $_SESSION['err'][] = $_SESSION['authHash'];
                     $_SESSION['err'][] = 'Не соответствует хэш авторизации / логин пользователя';
                     //переход на страницу с выводом ошибок
-                    header('Location: ?url=error');
+                    header('Location: ?url=error');*/
                     exit();
                 } else {
                     $_SESSION['message'] = "Привет, ".$userdata['user_log']."!(сессия)";
                     $_SESSION['role'] = $userdata['role'];
-                    header("Location: ?url=authSuccess");
+                    //header("Location: ?url=authSuccess");
+                    header("Location: ?url=authorized");
                     exit();
                 };
 
@@ -57,12 +58,14 @@
             } elseif (isset($_SESSION['VKoauthToken'])) {
                 $_SESSION['message'] = "Привет, ".$_SESSION['first_name']." ".$_SESSION['last_name']." !(VK OAuth)";
                 $_SESSION['role'] = 'guest';
-                header("Location: ?url=authSuccess");
+                //header("Location: ?url=authSuccess");
+                header("Location: ?url=authorized");
                 exit();
                 
             } else {
-                $_SESSION['err'][] = 'Нет авторизованных пользователей';
-                header('Location: ?url=error');
+                /*$_SESSION['err'][] = 'Нет авторизованных пользователей';
+                header('Location: ?url=error');*/
+                header("Location: ?url=main");
                 exit();
             };
         }
