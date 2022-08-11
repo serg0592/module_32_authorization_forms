@@ -3,7 +3,11 @@
 ?>
 
 <div class="main_btn">
-    <button class="the_btn" <?=$btnStatus?>>Ради этой <?=$btnAddText?> кнопки ТЫ авторизовался!</button>
+    <a href="?url=secretPage">
+        <button class="the_btn" <?=$btnStatus?>>
+            Ради этой <?=$btnAddText?> кнопки ТЫ авторизовался!
+        </button>
+    </a>
     <?php
         echo '<script language="javascript">';
         echo <<<END

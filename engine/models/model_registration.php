@@ -4,15 +4,19 @@
             // Страница регистрации нового пользователя 
             // Соединяемся с БД
             include '../config/db_connect.php';
+            include_once '../config/logger.php';
+            $err = 0;
             
             if(isset($_POST['registration'])) {                
                 // проверяем логин
                 if(!preg_match("/^[a-zA-Z0-9]+$/",$_POST['login'])) {
-                    $_SESSION['err'][] = "Логин может состоять только из букв английского алфавита и цифр";
+                    $err++;
+                    $log->error('Логин может состоять только из букв английского алфавита и цифр');
                 } 
                 
                 if(strlen($_POST['login']) < 3 or strlen($_POST['login']) > 30) {
-                    $_SESSION['err'][] = "Логин должен быть не меньше 3-х символов и не больше 30";
+                    $err++;
+                    $log->error('Логин должен быть не меньше 3-х символов и не больше 30');
                 } 
                 
                 // проверяем, не существует ли пользователя с таким именем
@@ -20,11 +24,12 @@
                                     WHERE user_log='".mysqli_real_escape_string($link, $_POST['login'])."'");
                 
                 if(mysqli_num_rows($query) > 0) {
-                    $_SESSION['err'][] = "Пользователь с таким логином уже существует в базе данных";
+                    $err++;
+                    $log->error('Пользователь с таким логином уже существует в базе данных');
                 } 
                 
                 // Если нет ошибок, то добавляем в БД нового пользователя
-                if(!isset($_SESSION['err'])) {
+                if($err = 0) {
                     $login = $_POST['login'];
                     // Убираем лишние пробелы и делаем хэширование методом crypt
                     $password = crypt($_POST['password'], 'UlTrAGyPeRsEcReT'); 

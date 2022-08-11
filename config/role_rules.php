@@ -6,18 +6,32 @@
             $canEdit = true;
             $canDelete = true;
             $canPush = true;
+            $canSeeText = true;
+            $canSeePic = true;
             break;
         case 'User':
             $canView = true;
             $canEdit = true;
             $canDelete = false;
             $canPush = false;
+            $canSeeText = false;
+            $canSeePic = false;
             break;
         case 'guest':
             $canView = true;
             $canEdit = false;
             $canDelete = false;
             $canPush = false;
+            $canSeeText = true;
+            $canSeePic = false;
+            break;
+        case 'VK':
+            $canView = true;
+            $canEdit = false;
+            $canDelete = false;
+            $canPush = true;
+            $canSeeText = true;
+            $canSeePic = true;
             break;
     };
 
@@ -37,5 +51,11 @@
     if ($canPush) {
         $btnStatus = '';
         $btnAddText = '';
+    };
+    if ($canSeeText) {
+        $viewPic = 'hidden';
+    };
+    if ($canSeePic) {
+        $viewPic = 'visible';
     };
 ?>

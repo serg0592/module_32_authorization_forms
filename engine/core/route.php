@@ -50,6 +50,10 @@ class Route
 					$controller_name = 'get_VK_userdata';
 					$action_name = 'get_VK_userdata';
 					break;
+				case 'secretPage':
+					$controller_name = 'secret_page';
+					$action_name = 'open';
+					break;
 			};
 		};
 

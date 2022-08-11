@@ -13,6 +13,8 @@
         
         //авторизация пользователя
         public function userAuth() {
+            include_once '../config/logger.php'; //логгер
+
             session_start();
             $_SESSION['login'] =& $_POST['login'];
             $_SESSION['password'] =& $_POST['password'];
@@ -63,13 +65,11 @@
                     header("Location: ?url=check");
 
                 } else {
-                    $_SESSION['err'][] = 'Неверный пароль';
-                    //header('Location: ?url=error');
+                    $log->error('Неверный пароль');
                     header('Location: &url=main');
                 };
             } else {
-                $_SESSION['err'][] = 'Неверный логин';
-                //header('Location: ?url=error');
+                $log->error('Неверный логин');
                 header('Location: &url=main');
             };
         }
