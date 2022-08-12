@@ -3,7 +3,7 @@
         function userReg() {
             // Страница регистрации нового пользователя 
             // Соединяемся с БД
-            include '../config/db_connect.php';
+            include_once '../config/db_connect.php';
             include_once '../config/logger.php';
             $err = 0;
             
@@ -29,11 +29,11 @@
                 } 
                 
                 // Если нет ошибок, то добавляем в БД нового пользователя
-                if($err = 0) {
+                if($err == 0) {
                     $login = $_POST['login'];
                     // Убираем лишние пробелы и делаем хэширование методом crypt
                     $password = crypt($_POST['password'], 'UlTrAGyPeRsEcReT'); 
-                    mysqli_query($link,"INSERT INTO users SET user_log='".$login."', user_pas='".$password."'");
+                    mysqli_query($link,"INSERT INTO users SET user_log='".$login."', user_pas='".$password."', role='guest'");
 
                     //переадресовываем на страницу с сообщением об успехе
                     header("Location: ?url=authorized");

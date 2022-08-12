@@ -69,7 +69,7 @@ class Route
 			$action_name = 'auth';
 		};
 		
-		//нажата кнопка "Регистрация"
+		//нажата кнопка "Зарегистрироваться" на странице регистрации
 		if (isset($_POST['registration'])) {
 			$controller_name = 'registration';
 			$action_name = 'registration';
@@ -118,26 +118,38 @@ class Route
 		    Route::ErrorPage404();
 		};
 
+		/*
 		//печать данных для контроля
 		session_start();
+
+		//если есть ошибки, то печатаем их (использовалось до подключения логгера)
 		if (isset($_SESSION['err'])) {
 			var_dump($_SESSION['err']);
 		};
+
+		//если есть id пользователя в сессии, то выводим его id, логин, пароль и хэш авторизации
 		if(isset($_SESSION['id'])) {
 			echo "id(DB)         = " . $_SESSION['id']."<br>";
 			echo "log(DB)        = " . $_SESSION['login']."<br>";
 			echo "password(DB)   = " . $_SESSION['password']."<br>";
 			echo "auth hash(DB)  = " . $_SESSION['authHash']."<br>";
+
+		//или проверяем наличие VK-токена в сессии
 		} elseif (isset($_SESSION['VKoauthToken'])) {
 			echo "auth token(VK) = " . $_SESSION['VKoauthToken']."<br>";
+
+			//печать ответа VK на запрос авторизации
 			if(isset($_SESSION['response'])) {
 				var_dump($_SESSION['response']);
 			};
 			echo "<br>";
+			
+			//печать запрошенных из VK данных пользователя
 			if(isset($_SESSION['userData'])) {
 				var_dump($_SESSION['userData']);
 			};
 		};
+		*/
 		
 	}
 

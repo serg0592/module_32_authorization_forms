@@ -6,7 +6,7 @@
         }
 
         function action_open() {
-            $this->view->generate('secret_page_view.php', 'template_view.php');
+            $this->view->generateAuth('secret_page_view.php', 'template_view.php', 'auth_user_greating_view.php');
         }
     }
 ?>
